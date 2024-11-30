@@ -93,6 +93,7 @@ export class PipelineCdkStack extends Stack {
           repo: 'todo-list-app',
           oauthToken: SecretValue.secretsManager('github-token', { jsonField : 'token' }), 
           output: sourceOutput,
+          branch: 'main',
         }),
       ],
     });
