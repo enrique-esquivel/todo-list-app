@@ -72,12 +72,12 @@ export class PipelineCdkStack extends Stack {
     const unitTestOutput = new codepipeline.Artifact();
     const dockerBuildOutput = new codepipeline.Artifact();
 
-    const gitToken = new CfnParameter(this, 'git-token', {
+    const gitToken = new CfnParameter(this, 'gittoken', {
       type: 'String',
       noEcho: true
     });
     
-    new secrets.Secret(this, 'git-token', {
+    new secrets.Secret(this, 'github-token', {
       secretName: 'github-token',
       secretObjectValue: {
         token: SecretValue.unsafePlainText(gitToken.valueAsString),
@@ -91,7 +91,7 @@ export class PipelineCdkStack extends Stack {
           actionName: 'Source',
           owner: 'enrique-esquivel',
           repo: 'todo-list-app',
-          oauthToken: SecretValue.secretsManager('github-token'),
+          oauthToken: SecretValue.secretsManager('github-token', { jsonField : 'token' }), 
           output: sourceOutput,
         }),
       ],
