@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+  pre_build:
+    commands:
+      - cd ./app
+      - echo Installing NPM packages
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm test
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
