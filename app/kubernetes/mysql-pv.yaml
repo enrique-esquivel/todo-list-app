@@ -5,7 +5,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: gp3
+  storageClassName: gp3 #AWS specific
   capacity:
     storage: 20Gi
   accessModes:
@@ -18,7 +18,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
 spec:
-  storageClassName: gp3
+  storageClassName: gp3 #AWS specific
   accessModes:
     - ReadWriteOnce
   resources:
